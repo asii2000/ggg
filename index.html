@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook Groups Uttara Tuition</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+padding:20px
+}
+
+.header{text-align:center;margin-bottom:30px}
+.header h1{font-size:28px;font-weight:600}
+.header p{color:#666;font-size:14px;margin-top:5px}
+
+.container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.card{
+background:#fff;
+border-radius:18px;
+padding:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;left:0;width:100%;height:5px;
+background:linear-gradient(90deg,#1877f2,#42a5f5);
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+.top-row{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-bottom:10px;
+}
+
+.logo{
+ width:40px;
+ height:40px;
+ border-radius:50%;
+ overflow:hidden;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#1877f2;
+ color:#fff;
+ font-weight:600;
+ font-size:14px;
+}
+
+.logo img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+.serial{
+ font-size:14px;
+ color:#999;
+}
+
+.group-name{
+font-size:16px;
+font-weight:600;
+margin-bottom:5px
+}
+
+.members{
+font-size:13px;
+color:#777;
+margin-bottom:15px
+}
+
+.join-btn{
+display:block;
+text-align:center;
+text-decoration:none;
+background:linear-gradient(90deg,#1877f2,#42a5f5);
+color:#fff;
+padding:10px;
+border-radius:10px;
+font-size:14px;
+transition:0.3s;
+}
+
+.join-btn:hover{opacity:0.9}
+
+.footer{
+text-align:center;
+margin-top:40px;
+color:#888;
+font-size:13px
+}
+
+.footer a{
+color:#1877f2;
+text-decoration:none;
+font-weight:500
+}
+
+@media(max-width:500px){
+.header h1{font-size:22px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🔥 Facebook Groups Uttara Tuition</h1>
+<p>Join top communities & grow your network</p>
+</div>
+
+<div class="container" id="groupContainer"></div>
+
+<div class="footer">
+© <span id="year"></span> Tuition Media | Developed by 
+<a href="https://arodx.com" target="_blank">arodx.com</a>
+</div>
+
+<script>
+const groups = [
+{name:"UTTARA TUITION",members:"39.8K members",link:"https://www.facebook.com/groups/3267946450150096/?__tn__=%2Cd"},
+{name:"UTTARA TUITION~উত্তরা টিউশন, ঢাকা💥",members:"39.8K members",link:"https://www.facebook.com/groups/1222174655274819/?__tn__=%2Cd"},
+{name:"Uttara Tuition Club = উত্তরা টিউশন ক্লাব 🔥",members:"39.8K members",link:"https://www.facebook.com/groups/682834833935746/?__tn__=%2Cd"},
+{name:"Uttara Tuition Media উত্তরা টিউশন মিডিয়া",members:"39.8K members",link:"https://www.facebook.com/groups/1071271393659619/?__tn__=%2Cd"},
+{name:"Uttara Tuition",members:"39.8K members",link:"https://www.facebook.com/groups/uttaratuitionn/?__tn__=%2Cd"},
+{name:"Uttara Tuition / উত্তরা টিউশন",members:"39.8K members",link:"https://www.facebook.com/groups/tutorlage/?__tn__=%2Cd"},
+{name:"Uttara Tuition",members:"39.8K members",link:"https://www.facebook.com/groups/529834388251896/?__tn__=%2Cd"},
+{name:"UTTARA TUITION HUB / উত্তরা টিউশন হাব, ঢাকা🔥",members:"39.8K members",link:"https://www.facebook.com/groups/1358016924761361/?__tn__=%2Cd"},
+{name:"Uttara Tuition Club || উত্তরা টিউটর/টিউশন ক্লাব, ঢাকা",members:"39.8K members",link:"https://www.facebook.com/groups/949993916445911/?__tn__=%2Cd"},
+{name:"Uttara Tuition Hub-উত্তরা টিউশন হাব",members:"39.8K members",link:"https://www.facebook.com/groups/834000844210829/?__tn__=%2Cd"},
+{name:"Uttara Tuition / Tutor - উত্তরা টিউশন মিডিয়া",members:"39.8K members",link:"https://www.facebook.com/groups/403249088630592/?__tn__=%2Cd"},
+{name:"Uttara Tuition/tutor",members:"39.8K members",link:"https://www.facebook.com/groups/768129609671068/?__tn__=%2Cd"},
+{name:"UTTARA TUITION ZONE",members:"39.8K members",link:"https://www.facebook.com/groups/uttaratuitionzone/?__tn__=%2Cd"},
+{name:"Uttara Tuition, Tutors || উত্তরা টিউশন, টিউটর'স 🔥",members:"39.8K members",link:"https://www.facebook.com/groups/376447607699198/?__tn__=%2Cd"},
+{name:"Uttara Tuition উত্তরা টিউশন",members:"39.8K members",link:"https://www.facebook.com/groups/780252306357114/?__tn__=%2Cd"},
+{name:"Uttara Tuition (উত্তরা টিউশন)",members:"39.8K members",link:"https://www.facebook.com/groups/224363862735433/?__tn__=%2Cd"},
+{name:"Tuition Wanted (Uttara & Bashundhara R/A)",members:"39.8K members",link:"https://www.facebook.com/groups/2774857472659436/?__tn__=%2Cd"},
+{name:"UTTARA TUITION",members:"39.8K members",link:"https://www.facebook.com/groups/219644516388838/?__tn__=%2Cd"},
+{name:"Uttara Tuition",members:"39.8K members",link:"https://www.facebook.com/groups/409635978389020/?__tn__=%2Cd"},
+{name:"Uttara Tuition - ( উত্তরা টিউশন )",members:"39.8K members",link:"https://www.facebook.com/groups/3649380061982335/?__tn__=%2Cd"},
+{name:"📒Uttara Tuition/Teacher-উত্তরা টিউশন/টিচার [মিডিয়ামুক্ত টিউশন●MFT]📝",members:"39.8K members",link:"https://www.facebook.com/groups/1412987352874758/?__tn__=%2Cd"},
+{name:"Uttara Tuition",members:"39.8K members",link:"https://www.facebook.com/groups/438676747831513/?__tn__=%2Cd"},
+{name:"Bashundhara & Uttara Tuition",members:"39.8K members",link:"https://www.facebook.com/groups/2501066293389216/?__tn__=%2Cd"},
+{name:"UTTARA TUITION",members:"39.8K members",link:"https://www.facebook.com/groups/574595791275429/?__tn__=%2Cd"},
+{name:"Uttara Urgent Tuition & Teacher point",members:"39.8K members",link:"https://www.facebook.com/groups/144494027254597/?__tn__=%2Cd"},
+{name:"UTTARA TUITION == উত্তরা টিউশন-ঢাকা 💥",members:"39.8K members",link:"https://www.facebook.com/groups/1707885503185528/?__tn__=%2Cd"},
+{name:"Uttara Tuition 💥",members:"39.8K members",link:"https://www.facebook.com/groups/uttaratuition1/?__tn__=%2Cd"},
+{name:"Uttara Tuition 💥💥",members:"39.8K members",link:"https://www.facebook.com/groups/1114355019423839/?__tn__=%2Cd"},
+{name:"TUITION AT UTTARA, BANANI, BARIDHARA, BASHUNDHARA, DHANMONDI",members:"39.8K members",link:"https://www.facebook.com/groups/178563319396631/?__tn__=%2Cd"},
+{name:"UTTARA TUITION HUB == উত্তরা টিউশন হাব, ঢাকা 💥",members:"39.8K members",link:"https://www.facebook.com/groups/1115781667367907/?__tn__=%2Cd"},
+{name:"Uttara, Tongi, Gazipur Area Tuition Media",members:"39.8K members",link:"https://www.facebook.com/groups/1063738367983494/?__tn__=%2Cd"},
+{name:"UTTARA TUTOR/TUITION PLATFORM",members:"39.8K members",link:"https://www.facebook.com/groups/2665804770346053/?__tn__=%2Cd"},
+];
+
+const container = document.getElementById('groupContainer');
+
+groups.forEach((group,index)=>{
+
+const card = document.createElement('div');
+card.className='card';
+
+const logoContent = group.logo
+  ? `<img src="${group.logo}" alt="logo">`
+  : `<span>${index+1}</span>`;
+
+card.innerHTML=`
+<div class="top-row">
+  <div class="logo">${logoContent}</div>
+  <div class="serial">#${index+1}</div>
+</div>
+<div class="group-name">${group.name}</div>
+<div class="members">${group.members}</div>
+<a href="${group.link}" target="_blank" rel="noopener noreferrer" class="join-btn">Join Group</a>
+`;
+
+container.appendChild(card);
+});
+
+// Auto year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
